@@ -1,0 +1,102 @@
+[
+    {
+        "name": "Hello Circle",
+        "description": "真ん中にシンプルな円を描く",
+        "code": "function setup() {\n    createCanvas(400, 400);\n}\n\nfunction draw() {\n    background(220);\n    circle(width / 2, height / 2, 50);\n}"
+    },
+    {
+        "name": "Moving Square",
+        "description": "マウスに追従する四角",
+        "code": "function setup() {\n    createCanvas(400, 400);\n}\n\nfunction draw() {\n    background(220);\n    rect(mouseX, mouseY, 50, 50);\n}"
+    },
+    {
+        "name": "Colorful Lines",
+        "description": "ランダムな色と位置で線を描き続ける",
+        "code": "function setup() {\n    createCanvas(400, 400);\n    background(255);\n}\n\nfunction draw() {\n    stroke(random(255), random(255), random(255)); // ランダムな色\n    line(mouseX, mouseY, pmouseX, pmouseY); // マウスの動きで線を描く\n}"
+    },
+    {
+        "name": "Bouncing Ball",
+        "description": "壁で跳ね返るボール",
+        "code": "let x, y;\nlet xspeed, yspeed;\nlet r = 25; // ボールの半径\n\nfunction setup() {\n    createCanvas(400, 400);\n    x = width / 2;\n    y = height / 2;\n    xspeed = 3;\n    yspeed = 2;\n}\n\nfunction draw() {\n    background(220);\n    ellipse(x, y, r * 2, r * 2);\n\n    x = x + xspeed;\n    y = y + yspeed;\n\n    if (x > width - r || x < r) {\n        xspeed = -xspeed;\n    }\n    if (y > height - r || y < r) {\n        yspeed = -yspeed;\n    }\n}"
+    },
+    {
+        "name": "3D Box Rotation",
+        "description": "3D空間で回転する箱",
+        "code": "function setup() {\n    createCanvas(400, 400, WEBGL);\n}\n\nfunction draw() {\n    background(200);\n    lights();\n    rotateX(frameCount * 0.01);\n    rotateY(frameCount * 0.005);\n    box(80);\n}"
+    },
+    {
+        "name": "カラフルな線",
+        "description": "マウスの動きに合わせてカラフルな線を描きます。",
+        "code": "function setup() {\n    createCanvas(windowWidth / 2, windowHeight / 2);\n    background(255);\n}\n\nfunction draw() {\n    stroke(random(255), random(255), random(255));\n    strokeWeight(4);\n    line(mouseX, mouseY, pmouseX, pmouseY);\n}"
+    },
+    {
+        "name": "バウンドするボール",
+        "description": "画面の端で跳ね返るボールのアニメーションです。",
+        "code": "let x, y;\nlet xspeed, yspeed;\nlet diameter = 50;\n\nfunction setup() {\n    createCanvas(400, 400);\n    x = width / 2;\n    y = height / 2;\n    xspeed = 5;\n    yspeed = 5;\n}\n\nfunction draw() {\n    background(220);\n    ellipse(x, y, diameter, diameter);\n\n    x = x + xspeed;\n    y = y + yspeed;\n\n    if (x > width - diameter / 2 || x < diameter / 2) {\n        xspeed = xspeed * -1;\n    }\n    if (y > height - diameter / 2 || y < diameter / 2) {\n        yspeed = yspeed * -1;\n    }\n}"
+    },
+    {
+        "name": "3Dボックスの回転",
+        "description": "マウスを動かすと3Dのボックスが回転します。",
+        "code": "function setup() {\n    createCanvas(400, 400, WEBGL);\n}\n\nfunction draw() {\n    background(220);\n    rotateX(mouseY * 0.01);\n    rotateY(mouseX * 0.01);\n    box(100);\n}"
+    },
+    {
+        "name": "インタラクティブな円のグリッド",
+        "description": "マウスの位置に応じて円のサイズが変わるグリッドです。",
+        "code": "function setup() {\n    createCanvas(400, 400);\n    noStroke();\n}\n\nfunction draw() {\n    background(0);\n    for (let x = 0; x <= width; x += 40) {\n        for (let y = 0; y <= height; y += 40) {\n            let d = dist(mouseX, mouseY, x, y);\n            let r = map(d, 0, 200, 10, 40);\n            fill(map(d, 0, 200, 0, 255), 150, 200);\n            ellipse(x, y, r, r);\n        }\n    }\n}"
+    },
+    {
+        "name": "シンプルな時計",
+        "description": "現在の時刻を表示するシンプルなアナログ時計です。",
+        "code": "function setup() {\n    createCanvas(400, 400);\n    angleMode(DEGREES); // 角度を度数法に設定\n}\n\nfunction draw() {\n    background(220);\n    translate(width / 2, height / 2);\n    \n    let hr = hour();\n    let mn = minute();\n    let sc = second();\n\n    // 秒針\n    push();\n    rotate(map(sc, 0, 60, 0, 360));\n    stroke(255, 0, 0);\n    strokeWeight(2);\n    line(0, 0, 0, -100);\n    pop();\n\n    // 分針\n    push();\n    rotate(map(mn, 0, 60, 0, 360));\n    stroke(0, 0, 255);\n    strokeWeight(4);\n    line(0, 0, 0, -80);\n    pop();\n\n    // 時針\n    push();\n    rotate(map(hr % 12, 0, 12, 0, 360));\n    stroke(0);\n    strokeWeight(6);\n    line(0, 0, 0, -60);\n    pop();\n\n    stroke(0);\n    strokeWeight(2);\n    point(0, 0);\n    noFill();\n    ellipse(0, 0, 200, 200);\n}"
+    },
+    {
+        "name": "インタラクティブな波",
+        "description": "マウスのX座標に応じて波の形が変わります。",
+        "code": "let angle = 0;\nlet amplitude = 75;\nlet period = 100;\n\nfunction setup() {\n    createCanvas(400, 400);\n    noFill();\n}\n\nfunction draw() {\n    background(220);\n    stroke(0);\n    strokeWeight(2);\n\n    translate(0, height / 2); // 原点を画面中央の高さに移動\n\n    beginShape();\n    for (let x = 0; x <= width; x++) {\n        // マウスのX座標を波の周期にマッピング\n        period = map(mouseX, 0, width, 50, 200);\n        // Y座標はsin波で計算\n        let y = sin(angle + x / period * TWO_PI) * amplitude;\n        vertex(x, y);\n    }\n    endShape();\n\n    angle += 0.05; // 時間経過で波を動かす\n}"
+    },
+    {
+        "name": "動く円の群れ",
+        "description": "画面内をランダムに動き回る複数の円です。",
+        "code": "let circles = [];\nlet numCircles = 20;\n\nfunction setup() {\n    createCanvas(400, 400);\n    for (let i = 0; i < numCircles; i++) {\n        circles.push({\n            x: random(width),\n            y: random(height),\n            r: random(10, 30),\n            xSpeed: random(-2, 2),\n            ySpeed: random(-2, 2),\n            color: color(random(255), random(255), random(255), 150)\n        });\n    }\n}\n\nfunction draw() {\n    background(0, 50); // 半透明の背景で残像効果\n    for (let i = 0; i < circles.length; i++) {\n        let c = circles[i];\n        noStroke();\n        fill(c.color);\n        ellipse(c.x, c.y, c.r * 2, c.r * 2);\n\n        c.x += c.xSpeed;\n        c.y += c.ySpeed;\n\n        if (c.x + c.r > width || c.x - c.r < 0) {\n            c.xSpeed *= -1;\n        }\n        if (c.y + c.r > height || c.y - c.r < 0) {\n            c.ySpeed *= -1;\n        }\n    }\n}"
+    },
+    {
+        "name": "虹色のグラデーション",
+        "description": "画面全体に美しい虹色のグラデーションを描画します。",
+        "code": "function setup() {\n    createCanvas(400, 400);\n    colorMode(HSB, 360, 100, 100); // 色をHSBモードに設定\n    noLoop(); // drawを一度だけ実行\n}\n\nfunction draw() {\n    for (let i = 0; i < width; i++) {\n        let hue = map(i, 0, width, 0, 360);\n        stroke(hue, 90, 90);\n        line(i, 0, i, height);\n    }\n}"
+    },
+    {
+        "name": "クリックで新しい円",
+        "description": "マウスをクリックするたびに、その位置にランダムな大きさの円が描画されます。",
+        "code": "function setup() {\n    createCanvas(400, 400);\n    background(220);\n}\n\nfunction draw() {\n    // draw関数はここでは何も描画しない\n}\n\nfunction mousePressed() {\n    // マウスがクリックされたときに実行\n    let r = random(20, 80);\n    fill(random(255), random(255), random(255), 150);\n    noStroke();\n    ellipse(mouseX, mouseY, r, r);\n}"
+    },
+    {
+        "name": "魅惑のパーティクル",
+        "description": "画面を漂う美しいパーティクルの群れです。",
+        "code": "let particles = [];\n\nfunction setup() {\n    createCanvas(400, 400);\n    for (let i = 0; i < 50; i++) {\n        particles.push(new Particle());\n    }\n}\n\nfunction draw() {\n    background(0, 20); // 半透明の背景で残像効果\n    for (let particle of particles) {\n        particle.update();\n        particle.show();\n    }\n}\n\nclass Particle {\n    constructor() {\n        this.x = random(width);\n        this.y = random(height);\n        this.vx = random(-1, 1);\n        this.vy = random(-1, 1);\n        this.alpha = random(100, 255);\n        this.radius = random(2, 8);\n        this.color = color(random(255), random(255), random(255), this.alpha);\n    }\n\n    update() {\n        this.x += this.vx;\n        this.y += this.vy;\n        this.alpha -= 0.5;\n        if (this.alpha < 0) {\n            this.alpha = 255;\n            this.x = random(width);\n            this.y = random(height);\n            this.vx = random(-1, 1);\n            this.vy = random(-1, 1);\n            this.radius = random(2, 8);\n            this.color = color(random(255), random(255), random(255), this.alpha);\n        }\n    }\n\n    show() {\n        noStroke();\n        fill(this.color.levels[0], this.color.levels[1], this.color.levels[2], this.alpha);\n        ellipse(this.x, this.y, this.radius * 2);\n    }\n}"
+    },
+    {
+        "name": "フラクタルツリー",
+        "description": "再帰的に枝分かれする美しいフラクタル図形を描きます。",
+        "code": "function setup() {\n    createCanvas(400, 400);\n    background(255);\n    stroke(0);\n    strokeWeight(1);\n    noLoop(); // drawは一度だけ実行\n}\n\nfunction draw() {\n    translate(width / 2, height);\n    branch(100);\n}\n\nfunction branch(len) {\n    line(0, 0, 0, -len);\n    translate(0, -len);\n\n    len *= 0.66; // 長さを短くする\n\n    if (len > 2) {\n        push();\n        rotate(PI / 4); // 右に回転\n        branch(len);\n        pop();\n\n        push();\n        rotate(-PI / 6); // 左に回転\n        branch(len);\n        pop();\n    }\n}"
+    },
+    {
+        "name": "マウスで描く万華鏡",
+        "description": "マウスの動きに合わせて対称な模様を描くインタラクティブな作品です。",
+        "code": "function setup() {\n    createCanvas(400, 400);\n    background(0);\n    angleMode(DEGREES);\n}\n\nfunction draw() {\n    translate(width / 2, height / 2); // 中心を原点に\n\n    let mx = mouseX - width / 2;\n    let my = mouseY - height / 2;\n    let pmx = pmouseX - width / 2;\n    let pmy = pmouseY - height / 2;\n\n    if (mouseIsPressed) {\n        for (let i = 0; i < 10; i++) { // 10個の対称な線を引く\n            rotate(360 / 10);\n            let r = map(sin(frameCount), -1, 1, 100, 255);\n            let g = map(cos(frameCount / 2), -1, 1, 100, 255);\n            let b = map(sin(frameCount / 3), -1, 1, 100, 255);\n            stroke(r, g, b, 150);\n            strokeWeight(2);\n            line(mx, my, pmx, pmy);\n            push();\n            scale(1, -1); // Y軸反転\n            line(mx, my, pmx, pmy);\n            pop();\n        }\n    }\n}"
+    },
+    {
+        "name": "音に反応するビジュアライザー",
+        "description": "マイクからの音の大きさに合わせて、カラフルな図形が変化するよ！",
+        "code": "let mic;\nlet fft;\n\nfunction setup() {\n    createCanvas(windowWidth, windowHeight);\n    angleMode(DEGREES);\n    colorMode(HSB, 360, 100, 100);\n    noFill();\n\n    mic = new p5.AudioIn();\n    mic.start();\n    fft = new p5.FFT();\n    fft.setInput(mic);\n}\n\nfunction draw() {\n    background(0, 0, 0, 10); // 残像効果のために少し透明な背景\n\n    let spectrum = fft.analyze();\n    let waveform = fft.waveform();\n\n    // 音の振幅を計算\n    let level = mic.getLevel();\n    let mappedLevel = map(level, 0, 0.5, 10, 200); // 振幅をサイズにマッピング\n\n    translate(width / 2, height / 2);\n\n    for (let i = 0; i < 360; i += 10) {\n        let r = map(sin(i + frameCount * 0.5), -1, 1, 50, mappedLevel + 50);\n        let g = map(cos(i + frameCount * 0.3), -1, 1, 50, mappedLevel + 50);\n        let b = map(sin(i + frameCount * 0.7), -1, 1, 50, mappedLevel + 50);\n        let hue = map(level, 0, 0.5, 0, 360);\n\n        push();\n        rotate(i);\n        stroke(hue, 80, 90, 0.8);\n        strokeWeight(2 + mappedLevel * 0.05);\n        line(0, r, 0, g);\n        ellipse(r, 0, b * 0.5, b * 0.5);\n        pop();\n    }\n\n    // waveformの表示\n    beginShape();\n    stroke(255);\n    strokeWeight(1);\n    for (let i = 0; i < waveform.length; i++) {\n        let x = map(i, 0, waveform.length, -width / 4, width / 4);\n        let y = map(waveform[i], -1, 1, -50, 50);\n        vertex(x, y + height / 4);\n    }\n    endShape();\n}\n\nfunction mousePressed() {\n    userStartAudio(); // p5.soundを使用するために必要\n}"
+    },
+    {
+        "name": "Webカメラを使ったエフェクト",
+        "description": "Webカメラの映像にカラフルなモザイクのようなエフェクトをかけるよ！",
+        "code": "let video;\nlet cellSize = 10; // モザイクのセルサイズ\n\nfunction setup() {\n    createCanvas(windowWidth, windowHeight);\n    pixelDensity(1);\n    video = createCapture(VIDEO); // Webカメラをキャプチャ\n    video.size(width / cellSize, height / cellSize); // 映像を小さくリサイズしてモザイク効果に利用\n    video.hide(); // 元のHTMLの映像要素を非表示にする\n    noStroke();\n    colorMode(HSB, 255);\n}\n\nfunction draw() {\n    background(0);\n    video.loadPixels(); // ビデオのピクセルを読み込む\n\n    for (let y = 0; y < video.height; y++) {\n        for (let x = 0; x < video.width; x++) {\n            let index = (video.width - x + 1 + (y * video.width)) * 4; // 鏡像にするための調整\n            let r = video.pixels[index + 0];\n            let g = video.pixels[index + 1];\n            let b = video.pixels[index + 2];\n\n            // HSBに変換して色を調整\n            let c = color(r, g, b);\n            let h = hue(c);\n            let s = saturation(c);\n            let br = brightness(c);\n\n            fill(h + frameCount % 255, s, br, 180); // 色相をアニメーションさせる\n            rect(x * cellSize, y * cellSize, cellSize, cellSize);\n        }\n    }\n}"
+    },
+    {
+        "name": "キーボードで操作するキャラクター",
+        "description": "キーボードの矢印キーで動く、シンプルなキャラクターだよ！",
+        "code": "let charX, charY;\nlet charSize = 30;\nlet charSpeed = 5;\n\nfunction setup() {\n    createCanvas(400, 400);\n    charX = width / 2;\n    charY = height / 2;\n    rectMode(CENTER); // 四角形を中央揃えで描画\n}\n\nfunction draw() {\n    background(220);\n    fill(255, 100, 100);\n    rect(charX, charY, charSize, charSize);\n\n    // キー入力でキャラクターを移動\n    if (keyIsDown(LEFT_ARROW)) {\n        charX -= charSpeed;\n    }\n    if (keyIsDown(RIGHT_ARROW)) {\n        charX += charSpeed;\n    }\n    if (keyIsDown(UP_ARROW)) {\n        charY -= charSpeed;\n    }\n    if (keyIsDown(DOWN_ARROW)) {\n        charY += charSpeed;\n    }\n\n    // 画面外に出ないように制限\n    charX = constrain(charX, charSize / 2, width - charSize / 2);\n    charY = constrain(charY, charSize / 2, height - charSize / 2);\n}"
+    }
+]

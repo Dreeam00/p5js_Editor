@@ -1,0 +1,616 @@
+{
+    "p5_basic": {
+        "category_name": "p5.jsのきほん",
+        "description": "p5.jsはJavaScriptで絵を描いたり、アニメーションを作ったりするためのライブラリだよ。setup()とdraw()が基本！\n\n**主な描画関数**: いろいろな形や線を描くことができるよ。\n**色**: 背景や図形の色を自由に変えられるんだ。\n**マウスとキーボード**: マウスの動きやキーボードの入力を使って、プログラムを動かすことができるよ。\n**システム変数**: p5.jsが自動で教えてくれる、キャンバスの大きさやマウスの位置などの情報だよ。",
+        "items": {
+            "createCanvas": {
+                "name": "createCanvas(w, h)",
+                "title": "キャンバスを作る",
+                "description": "幅 `w` と高さ `h` のキャンバスを作る関数だよ。",
+                "syntax": "createCanvas(400, 400);",
+                "syntax_description": "w: キャンバスの横幅\nh: キャンバスの縦幅"
+            },
+            "background": {
+                "name": "background(color)",
+                "title": "背景色を変える",
+                "description": "キャンバスの背景色を設定するよ。数字一つでグレースケール、RGBで色を指定できるんだ。",
+                "syntax": "background(220);\nbackground(255, 0, 0); // 赤色",
+                "syntax_description": "color: 背景色（0-255のグレースケール、またはR, G, B値）"
+            },
+            "stroke": {
+                "name": "stroke(color)",
+                "title": "線の色を変える",
+                "description": "図形の線の色を設定するよ。`noStroke()`で線をなくすこともできるんだ。",
+                "syntax": "stroke(0); // 黒い線\nnoStroke(); // 線なし",
+                "syntax_description": "color: 線の色（0-255のグレースケール、またはR, G, B値）"
+            },
+            "fill": {
+                "name": "fill(color)",
+                "title": "塗りつぶしの色を変える",
+                "description": "図形の中を塗りつぶす色を設定するよ。`noFill()`で塗りつぶしをなくすこともできるんだ。",
+                "syntax": "fill(255, 0, 0); // 赤色で塗りつぶし\nnoFill(); // 塗りつぶしなし",
+                "syntax_description": "color: 塗りつぶしの色（0-255のグレースケール、またはR, G, B値）"
+            },
+            "rect": {
+                "name": "rect(x, y, w, h)",
+                "title": "四角を描く",
+                "description": "位置と横幅、縦幅を与えて四角を描けます",
+                "syntax": "rect(50, 50, 100, 100)",
+                "syntax_description": "x: 四角のX座標\ny: 四角のY座標\nw: 四角の横幅\nh: 四角の縦幅"
+            },
+            "ellipse": {
+                "name": "ellipse(x, y, w, h)",
+                "title": "円や楕円を描く",
+                "description": "円や楕円を描く関数だよ。`x`, `y` は中心の座標、`w` は横幅、`h` は縦幅だよ。円を描くときは`w`と`h`を同じにするんだ。",
+                "syntax": "ellipse(width / 2, height / 2, 50, 50); // 真ん中に円",
+                "syntax_description": "x: 中心点のX座標\ny: 中心点のY座標\nw: 横幅\nh: 縦幅"
+            },
+            "line": {
+                "name": "line(x1, y1, x2, y2)",
+                "title": "線を描く",
+                "description": "線を描く関数だよ。`(x1, y1)`から`(x2, y2)`まで線を引くんだ。",
+                "syntax": "line(0, 0, width, height); // 左上から右下への線",
+                "syntax_description": "x1: 始点のX座標\ny1: 始点のY座標\nx2: 終点のX座標\ny2: 終点のY座標"
+            },
+            "text": {
+                "name": "text(str, x, y)",
+                "title": "文字を表示する",
+                "description": "文字列 `str` を `(x, y)` の位置に表示するよ。",
+                "syntax": "textSize(16);\ntext(\"Hello!\", 10, 30);",
+                "syntax_description": "str: 表示する文字列\nx: 文字列のX座標\ny: 文字列のY座標"
+            },
+            "textSize": {
+                "name": "textSize(size)",
+                "title": "文字の大きさを変える",
+                "description": "表示する文字の大きさを設定するよ。",
+                "syntax": "textSize(24);",
+                "syntax_description": "size: 文字の大きさ（ピクセル単位）"
+            },
+            "width_height": {
+                "name": "width, height",
+                "title": "キャンバスの幅と高さ",
+                "description": "キャンバスの幅と高さを示すシステム変数だよ。",
+                "syntax": "console.log(\"キャンバスの幅: \" + width);\nconsole.log(\"キャンバスの高さ: \" + height);",
+                "syntax_description": "width: キャンバスの横幅\nheight: キャンバスの縦幅"
+            },
+            "mouseX_mouseY": {
+                "name": "mouseX, mouseY",
+                "title": "マウスの位置",
+                "description": "マウスカーソルの現在のX座標とY座標を示すシステム変数だよ。",
+                "syntax": "ellipse(mouseX, mouseY, 20, 20);",
+                "syntax_description": "mouseX: マウスのX座標\nmouseY: マウスのY座標"
+            },
+            "pmouseX_pmouseY": {
+                "name": "pmouseX, pmouseY",
+                "title": "前のフレームのマウスの位置",
+                "description": "ひとつ前のフレームでのマウスカーソルのX座標とY座標を示すシステム変数だよ。",
+                "syntax": "line(mouseX, mouseY, pmouseX, pmouseY); // マウスの軌跡",
+                "syntax_description": "pmouseX: 前のフレームのマウスのX座標\npmouseY: 前のフレームのマウスのY座標"
+            },
+            "frameRate": {
+                "name": "frameRate()",
+                "title": "フレームレートを取得",
+                "description": "現在のフレームレート（1秒間に何回draw()が実行されているか）を返す関数だよ。",
+                "syntax": "text(\"FPS: \" + frameRate().toFixed(0), 10, 20);",
+                "syntax_description": "なし"
+            },
+            "mouseIsPressed": {
+                "name": "mouseIsPressed",
+                "title": "マウスが押されているか",
+                "description": "マウスボタンが押されている間は`true`になるシステム変数だよ。",
+                "syntax": "if (mouseIsPressed) {\n    fill(0);\n} else {\n    fill(255);\n}",
+                "syntax_description": "`true`: マウスが押されている\n`false`: マウスが押されていない"
+            },
+            "keyIsPressed": {
+                "name": "keyIsPressed",
+                "title": "キーが押されているか",
+                "description": "キーボードのキーが押されている間は`true`になるシステム変数だよ。",
+                "syntax": "if (keyIsPressed) {\n    background(0); // 背景を黒に\n}",
+                "syntax_description": "`true`: キーが押されている\n`false`: キーが押されていない"
+            },
+            "key": {
+                "name": "key",
+                "title": "押されたキー",
+                "description": "最後に押されたキーの文字を示すシステム変数だよ。",
+                "syntax": "if (key === 'a') {\n    // 'a'キーが押された時の処理\n}",
+                "syntax_description": "押されたキーの文字（例: 'a', 'b', ' '）"
+            },
+            "mag": {
+                "name": "mag()",
+                "title": "ベクトル長を計算する",
+                "description": "2Dまたは3Dベクトルのマグニチュード（長さ）を計算して返します。",
+                "syntax": "mag(x, y)",
+                "syntax_description": "x: x座標またはp5.Vector\ny: y座標"
+            },
+            "map": {
+                "name": "map()",
+                "title": "数値を範囲内で変換する",
+                "description": "ある数値の範囲を別の数値の範囲にマッピング（変換）します。",
+                "syntax": "map(value, start1, stop1, start2, stop2, [withinBounds])",
+                "syntax_description": "value: マッピングする数値\nstart1: 現在の範囲の下限\nstop1: 現在の範囲の上限\nstart2: 新しい範囲の下限\nstop2: 新しい範囲の上限\nwithinBounds: (オプション) trueの場合、結果は新しい範囲にクランプされます。"
+            },
+            "max": {
+                "name": "max()",
+                "title": "最大値を返す",
+                "description": "2つの数値のうち、大きい方を返します。",
+                "syntax": "max(a, b)",
+                "syntax_description": "a: 比較する数値1\nb: 比較する数値2"
+            },
+            "min": {
+                "name": "min()",
+                "title": "最小値を返す",
+                "description": "2つの数値のうち、小さい方を返します。",
+                "syntax": "min(a, b)",
+                "syntax_description": "a: 比較する数値1\nb: 比較する数値2"
+            },
+            "random": {
+                "name": "random()",
+                "title": "乱数を生成する",
+                "description": "指定された範囲内の乱数を生成します。",
+                "syntax": "random([min], [max])",
+                "syntax_description": "min: (オプション) 最小値（デフォルトは0）\nmax: (オプション) 最大値（minが指定された場合は必須）"
+            },
+            "round": {
+                "name": "round()",
+                "title": "数値を四捨五入する",
+                "description": "数値を最も近い整数に四捨五入します。",
+                "syntax": "round(value)",
+                "syntax_description": "value: 四捨五入する数値"
+            },
+            "abs": {
+                "name": "abs()",
+                "title": "絶対値を返す",
+                "description": "数値の絶対値を計算して返します。",
+                "syntax": "abs(value)",
+                "syntax_description": "value: 絶対値を計算する数値"
+            },
+            "dist": {
+                "name": "dist(x1, y1, x2, y2)",
+                "title": "二点間の距離を計算する",
+                "description": "2つの点 `(x1, y1)` と `(x2, y2)` の間の距離を計算して返します。",
+                "syntax": "let d = dist(0, 0, mouseX, mouseY);",
+                "syntax_description": "x1: 1つ目の点のX座標\ny1: 1つ目の点のY座標\nx2: 2つ目の点のX座標\ny2: 2つ目の点のY座標"
+            },
+            "sin": {
+                "name": "sin(angle)",
+                "title": "サインを計算する",
+                "description": "与えられた角度のサイン（正弦）を計算します。円周上のY座標を計算するのに使われることが多いよ。",
+                "syntax": "let y_pos = sin(radians(frameCount)) * 50;",
+                "syntax_description": "angle: 計算する角度（ラジアンまたは度数）。`angleMode(DEGREES)`で度数法にできる。"
+            },
+            "cos": {
+                "name": "cos()",
+                "title": "コサインを計算する",
+                "description": "与えられた角度のコサイン（余弦）を計算します。円周上のX座標を計算するのに使われることが多いよ。",
+                "syntax": "cos(angle)",
+                "syntax_description": "angle: 計算する角度（ラジアンまたは度数）"
+            },
+            "TWO_PI": {
+                "name": "TWO_PI",
+                "title": "2π (ラジアン)",
+                "description": "円周のラジアン値（2π）を表す定数です。`sin()`や`cos()`を使うときに役立つよ。",
+                "syntax": "TWO_PI",
+                "syntax_description": ""
+            },
+            "translate": {
+                "name": "translate(x, y)",
+                "title": "位置を移動する",
+                "description": "描画するものの基準点を移動させる関数だよ。例えば、`translate(width/2, height/2)`とすると、キャンバスの中心が原点になるんだ。",
+                "syntax": "translate(width / 2, height / 2);\nrect(0, 0, 50, 50); // 新しい原点(0,0)から四角を描く",
+                "syntax_description": "x: X方向の移動量\ny: Y方向の移動量"
+            },
+            "beginShape_endShape": {
+                "name": "beginShape() / endShape()",
+                "title": "カスタムシェイプを描く",
+                "description": "自由な形の図形を描くために使う関数だよ。`beginShape()`で描き始め、`vertex()`で頂点を指定し、`endShape()`で描き終わりだよ。",
+                "syntax": "beginShape();\nvertex(20, 20);\nvertex(40, 20);\nvertex(40, 40);\nendShape(CLOSE); // CLOSEで図形を閉じる",
+                "syntax_description": "beginShape(): 新しい図形の頂点定義を開始\nendShape([mode]): 現在の図形の頂点定義を終了。`CLOSE`を渡すと図形を閉じる。"
+            },
+            "push_pop": {
+                "name": "push() / pop() (2D)",
+                "title": "描画設定の保存と復元",
+                "description": "`push()`は現在の描画設定（`translate`, `rotate`, `scale`, 色など）を保存し、`pop()`は保存した設定を元に戻すよ。特定の図形だけに特別な設定を適用したいときに便利だよ。",
+                "syntax": "push();\ntranslate(50, 50);\nfill(255, 0, 0);\nrect(0, 0, 30, 30);\npop(); // 設定が元に戻る",
+                "syntax_description": "push(): 現在の描画状態をスタックに保存\npop(): スタックから描画状態を復元"
+            },
+            "hour": {
+                "name": "hour()",
+                "title": "現在の時を取得する",
+                "description": "システムの現在の時（0から23まで）を取得します。",
+                "syntax": "let h = hour();\ntext(h, 10, 30);",
+                "syntax_description": ""
+            },
+            "minute": {
+                "name": "minute()",
+                "title": "現在の分を取得する",
+                "description": "システムの現在の分（0から59まで）を取得します。",
+                "syntax": "let m = minute();\ntext(m, 10, 30);",
+                "syntax_description": ""
+            },
+            "second": {
+                "name": "second()",
+                "title": "現在の秒を取得する",
+                "description": "システムの現在の秒（0から59まで）を取得します。",
+                "syntax": "let s = second();\ntext(s, 10, 30);",
+                "syntax_description": ""
+            },
+            "angleMode": {
+                "name": "angleMode(mode)",
+                "title": "角度の単位を設定する",
+                "description": "角度の単位（ラジアンまたは度数）を設定するよ。`DEGREES`で度数法（0-360）、`RADIANS`でラジアン法（0-TWO_PI）になるんだ。",
+                "syntax": "angleMode(DEGREES); // 今後、角度は度数で指定\nrotate(45); // 45度回転",
+                "syntax_description": "mode: 角度のモード。`DEGREES`（度数法）または`RADIANS`（ラジアン法）を指定します。"
+            },
+            "PI": {
+                "name": "PI",
+                "title": "円周率 (π)",
+                "description": "円周率（約3.14159）を表す定数です。`rotate()`などの角度計算や、円に関する計算で使うよ。",
+                "syntax": "PI",
+                "syntax_description": ""
+            },
+            "colorMode": {
+                "name": "colorMode(mode, [max1, max2, max3, maxA])",
+                "title": "色のモードを設定する",
+                "description": "色を扱うモードを設定するよ。`RGB`（赤、緑、青）や`HSB`（色相、彩度、明度）などがあるんだ。それぞれ`0`から`255`や`0`から`360`などの範囲を設定できるよ。",
+                "syntax": "colorMode(HSB, 360, 100, 100, 1); // HSBモードで色相0-360、彩度0-100、明度0-100、透明度0-1に設定",
+                "syntax_description": "mode: 色のモード。`RGB`または`HSB`を指定します。\nmax1, max2, max3, maxA: 各色の最大値を設定します。"
+            },
+            "noLoop": {
+                "name": "noLoop()",
+                "title": "draw関数の繰り返しを停止する",
+                "description": "`draw()`関数が繰り返し実行されるのを止める関数だよ。静止画を描きたいときや、ユーザー操作があったときだけ描画を更新したいときに使うんだ。",
+                "syntax": "function setup() {\n    createCanvas(400, 400);\n    noLoop(); // draw関数は一度しか実行されない\n    background(220);\n    ellipse(width/2, height/2, 50, 50);\n}",
+                "syntax_description": "`noLoop()`を呼び出すと、`draw()`関数の自動的な繰り返しが停止します。再び繰り返したい場合は`loop()`を呼び出します。"
+            },
+            "mousePressed": {
+                "name": "mousePressed()",
+                "title": "マウスが押されたときに実行される関数",
+                "description": "マウスの左ボタンがクリックされたときに自動的に呼び出される特別な関数だよ。クリックするたびに何かをしたいときに使うんだ。",
+                "syntax": "function mousePressed() {\n    console.log(\"マウスがクリックされました！\");\n}",
+                "syntax_description": "この関数は、マウスがクリックされるたびに一度だけ実行されます。"
+            },
+            "branch": {
+                "name": "branch(len)",
+                "title": "枝を描く (カスタム関数)",
+                "description": "これは「フラクタルツリー」プリセットで使われている、自分で作った関数だよ。線を描いて、その先からまた小さな枝を再帰的に描くことで、木のような形を作るんだ。",
+                "syntax": "branch(100); // 長さ100の枝から描画開始",
+                "syntax_description": "len: 枝の長さ"
+            },
+            "noise": {
+                "name": "noise(x, [y], [z])",
+                "title": "パーリンノイズを取得する",
+                "description": "ランダムだけどなめらかにつながる値（パーリンノイズ）を生成する関数だよ。自然な動きや模様を作るのに役立つんだ。",
+                "syntax": "let value = noise(xoff, yoff);\n// xoff, yoff は時間や位置によって変化する値",
+                "syntax_description": "x: ノイズのX座標\ny: (オプション) ノイズのY座標\nz: (オプション) ノイズのZ座標"
+            },
+            "pixelDensity": {
+                "name": "pixelDensity(density)",
+                "title": "ピクセル密度を設定する",
+                "description": "Retinaディスプレイのような高解像度ディスプレイで、より鮮明な描画を行うためにピクセル密度を設定する関数だよ。通常は`1`に設定して、キャンバスのピクセルを直接扱えるようにするんだ。",
+                "syntax": "pixelDensity(1);",
+                "syntax_description": "density: ピクセル密度。`1`が標準。"
+            },
+            "loadPixels_updatePixels": {
+                "name": "loadPixels() / updatePixels()",
+                "title": "ピクセルデータを直接操作する",
+                "description": "キャンバス上のすべてのピクセルデータを読み込んだり、変更したピクセルデータをキャンバスに反映させたりする関数だよ。`,pixels`配列と一緒に使うことが多いね。",
+                "syntax": "loadPixels();\npixels[0] = 255; // 左上のピクセルの赤成分を最大に\nupdatePixels();",
+                "syntax_description": "`loadPixels()`: キャンバスのピクセルデータを`pixels`配列に読み込む\n`updatePixels()`: `pixels`配列の変更をキャンバスに反映する"
+            },
+            "pixels": {
+                "name": "pixels[]",
+                "title": "ピクセルデータの配列",
+                "description": "キャンバス上のすべてのピクセル情報を格納している配列だよ。`loadPixels()`で読み込み、`updatePixels()`で反映するんだ。各ピクセルはRGBA（赤、緑、青、透明度）の4つの値で表現されるから、配列の長さは`width * height * 4`になるよ。",
+                "syntax": "loadPixels();\nlet r = pixels[(x + y * width) * 4]; // (x,y)のピクセルの赤成分を取得",
+                "syntax_description": "ピクセルデータがRGBAの順に格納された配列。"
+            },
+            "constrain": {
+                "name": "constrain(value, low, high)",
+                "title": "値を範囲内に制限する",
+                "description": "ある値が指定された最小値と最大値の間に収まるように制限する関数だよ。",
+                "syntax": "let limitedValue = constrain(mouseY, 100, 300);",
+                "syntax_description": "value: 制限したい値\nlow: 最小値\nhigh: 最大値"
+            },
+            "floor": {
+                "name": "floor(value)",
+                "title": "小数点以下を切り捨てる",
+                "description": "数値の小数点以下を切り捨てて、最も近い小さい整数を返す関数だよ。",
+                "syntax": "let intValue = floor(3.7); // 結果は3",
+                "syntax_description": "value: 整数に変換する数値"
+            },
+            "laplaceA": {
+                "name": "laplaceA(x, y)",
+                "title": "ラプラシアンA (カスタム関数)",
+                "description": "これは「魅惑の反応拡散パターン」プリセットで使われている、自分で作った関数だよ。反応拡散システムにおいて、化学物質Aの拡散を計算するために使われるんだ。周囲のピクセルとの関係を見て、Aの濃度がどう変化するかを計算しているよ。",
+                "syntax": "let sumA = laplaceA(x, y);",
+                "syntax_description": "x: グリッドのX座標\ny: グリッドのY座標"
+            },
+            "laplaceB": {
+                "name": "laplaceB(x, y)",
+                "title": "ラプラシアンB (カスタム関数)",
+                "description": "これも「魅惑の反応拡散パターン」プリセットで使われている、自分で作った関数だよ。化学物質Bの拡散を計算するために使われるんだ。",
+                "syntax": "let sumB = laplaceB(x, y);",
+                "syntax_description": "x: グリッドのX座標\ny: グリッドのY座標"
+            },
+            "p5_audioin": {
+                "name": "p5.AudioIn()",
+                "title": "マイク入力オブジェクトを作成する",
+                "description": "マイクからの音声入力を取得するためのオブジェクトを作成するよ。",
+                "syntax": "let mic = new p5.AudioIn();",
+                "syntax_description": "返り値: 音声入力オブジェクト"
+            },
+            "mic_start": {
+                "name": "mic.start()",
+                "title": "マイク入力を開始する",
+                "description": "`p5.AudioIn()`で作成したマイク入力オブジェクトから、音声の取得を開始するよ。",
+                "syntax": "mic.start();",
+                "syntax_description": ""
+            },
+            "p5_fft": {
+                "name": "p5.FFT()",
+                "title": "FFT分析オブジェクトを作成する",
+                "description": "音声の周波数分析（FFT）を行うためのオブジェクトを作成するよ。音の成分を細かく調べることができるんだ。",
+                "syntax": "let fft = new p5.FFT();",
+                "syntax_description": "返り値: FFT分析オブジェクト"
+            },
+            "fft_setinput": {
+                "name": "fft.setInput(source)",
+                "title": "FFT分析の入力源を設定する",
+                "description": "`p5.FFT()`で作成したFFT分析オブジェクトに、どの音声（例: `mic`）を分析するかを設定するよ。",
+                "syntax": "fft.setInput(mic);",
+                "syntax_description": "source: 音源オブジェクト（例: `mic`）"
+            },
+            "fft_analyze": {
+                "name": "fft.analyze()",
+                "title": "音声の周波数スペクトルを分析する",
+                "description": "現在の音声の周波数スペクトル（どの高さの音がどれくらい含まれているか）を分析し、結果を配列で返すよ。",
+                "syntax": "let spectrum = fft.analyze();",
+                "syntax_description": "返り値: 周波数スペクトルの配列"
+            },
+            "fft_waveform": {
+                "name": "fft.waveform()",
+                "title": "音声の波形データを取得する",
+                "description": "現在の音声の波形データ（音の振動の形）を分析し、結果を配列で返すよ。",
+                "syntax": "let waveform = fft.waveform();",
+                "syntax_description": "返り値: 波形データの配列"
+            },
+            "mic_getlevel": {
+                "name": "mic.getLevel()",
+                "title": "マイクの音量レベルを取得する",
+                "description": "`p5.AudioIn()`で取得している現在の音量レベル（0.0から1.0の間）を返すよ。",
+                "syntax": "let volume = mic.getLevel();",
+                "syntax_description": "返り値: 音量レベル（float）"
+            },
+            "userstartaudio": {
+                "name": "userStartAudio()",
+                "title": "ユーザー操作で音声を有効にする",
+                "description": "ブラウザのセキュリティ制限のため、多くのブラウザではユーザーが何らかの操作（クリックなど）をするまで音声の再生やマイク入力ができないようになっているよ。この関数を`mousePressed()`などのユーザー操作イベント内で呼び出すことで、音声機能を有効にできるんだ。",
+                "syntax": "function mousePressed() {\n    userStartAudio();\n}",
+                "syntax_description": ""
+            },
+            "createcapture": {
+                "name": "createCapture(type)",
+                "title": "カメラやディスプレイをキャプチャする",
+                "description": "Webカメラなどの映像ストリームをキャプチャして、それをp5.jsで扱うためのオブジェクトを作成するよ。",
+                "syntax": "let video = createCapture(VIDEO);",
+                "syntax_description": "type: キャプチャするメディアの種類。`VIDEO`を指定するとWebカメラをキャプチャするよ。"
+            },
+            "video_size": {
+                "name": "video.size(w, h)",
+                "title": "キャプチャ映像のサイズを設定する",
+                "description": "`createCapture()`で作成した映像の表示サイズを設定するよ。",
+                "syntax": "video.size(320, 240);",
+                "syntax_description": "w: 幅\nh: 高さ"
+            },
+            "video_hide": {
+                "name": "video.hide()",
+                "title": "元の映像要素を非表示にする",
+                "description": "`createCapture()`で作成した映像は、デフォルトでHTML要素として表示されるけど、これを非表示にするよ。p5.jsのキャンバス上でだけ映像を扱いたいときに使うんだ。",
+                "syntax": "video.hide();",
+                "syntax_description": ""
+            },
+            "video_loadpixels": {
+                "name": "video.loadPixels()",
+                "title": "キャプチャ映像のピクセルを読み込む",
+                "description": "`createCapture()`で取得した映像の現在のフレームのピクセルデータを`video.pixels`配列に読み込むよ。",
+                "syntax": "video.loadPixels();",
+                "syntax_description": ""
+            },
+            "hue_saturation_brightness": {
+                "name": "hue(), saturation(), brightness()",
+                "title": "色のHSB成分を取得する",
+                "description": "`colorMode(HSB)`が設定されているときに、特定の色から色相（hue）、彩度（saturation）、明度（brightness）の値をそれぞれ取得する関数だよ。",
+                "syntax": "let myColor = color(255, 0, 0); // 赤色\nlet h = hue(myColor);\nlet s = saturation(myColor);\nlet b = brightness(myColor);",
+                "syntax_description": "hue(color): 色相を返す\nsaturation(color): 彩度を返す\nbrightness(color): 明度を返す"
+            },
+            "keyisdown": {
+                "name": "keyIsDown(keyCode)",
+                "title": "特定のキーが押されているか",
+                "description": "指定されたキーコードのキーが押されている間は`true`を返す関数だよ。ゲームのキャラクター操作などで、複数のキーが同時に押されているかを判定したいときに便利だよ。",
+                "syntax": "if (keyIsDown(LEFT_ARROW)) {\n    // 左矢印キーが押されている間の処理\n}",
+                "syntax_description": "keyCode: 判定したいキーのコード。`LEFT_ARROW`, `RIGHT_ARROW`, `UP_ARROW`, `DOWN_ARROW`などの特別な定数も使える。"
+            },
+            "arrow_keys": {
+                "name": "LEFT_ARROW, RIGHT_ARROW, UP_ARROW, DOWN_ARROW",
+                "title": "矢印キーの定数",
+                "description": "キーボードの矢印キーに対応する特別な定数だよ。`keyIsDown()`関数と一緒に使って、矢印キーの入力を簡単に検出できるんだ。",
+                "syntax": "if (keyIsDown(LEFT_ARROW)) { ... }",
+                "syntax_description": ""
+            },
+            "rectmode": {
+                "name": "rectMode(mode)",
+                "title": "四角形の描画モードを設定する",
+                "description": "`rect()`関数で四角形を描画する際の基準点を設定するよ。`CENTER`にすると、指定した座標が四角形の中心になるんだ。デフォルトは`CORNER`で左上が基準点だよ。",
+                "syntax": "rectMode(CENTER);\nrect(width/2, height/2, 50, 50); // キャンバスの中心に四角形が描かれる",
+                "syntax_description": "mode: `CORNER`（デフォルト、左上が基準点）、`CORNERS`（対角の2点が基準点）、`CENTER`（中心が基準点）、`RADIUS`（中心と半径で指定）"
+            }
+        }
+    },
+    "js_basic": {
+        "category_name": "JavaScriptのきほん",
+        "description": "JavaScriptはウェブサイトを動かすプログラミング言語だよ。プログラミングの土台となる考え方を学ぼう！",
+        "items": {
+            "variables": {
+                "name": "変数 (Variables)",
+                "title": "情報をしまっておく箱",
+                "description": "数字や文字など、プログラムで使う情報をしまっておくための箱だよ。`let`や`const`を使って作るんだ。",
+                "syntax": "let score = 100; // 数字をしまう\nconst name = \"Pico\"; // 文字をしまう (変えられない)\nscore = 120; // 後から値を変えることもできる",
+                "syntax_description": "`let 変数名 = 値;`: 値を変えられる変数を作る\n`const 変数名 = 値;`: 値を変えられない変数を作る"
+            },
+            "functions": {
+                "name": "関数 (Functions)",
+                "title": "特定の仕事をまとめる",
+                "description": "特定の仕事をまとめて行うもの。コードを整理して、何度も同じ処理をするときに便利だよ。",
+                "syntax": "function greet(name) {\n    return \"こんにちは、\" + name + \"さん！\";\n}\nlet message = greet(\"Codey\");\nconsole.log(message);",
+                "syntax_description": "`function 関数名(引数1, 引数2) { ... }`: 関数を定義する。引数を受け取って、`return`で値を返すことができる。"
+            },
+            "if_else": {
+                "name": "もしも (If/Else Statements)",
+                "title": "条件によって動きを変える",
+                "description": "条件によってプログラムの動きを変えることができるよ。「もし〜だったら、これをして、そうでなければ、あれをする」というように使うんだ。",
+                "syntax": "let score = 80;\nif (score > 70) {\n    console.log(\"合格！\");\n} else {\n    console.log(\"もう少しがんばろう！\");\n}\n\nlet weather = \"晴れ\";\nif (weather === \"晴れ\") {\n    console.log(\"公園に行こう！\");\n} else if (weather === \"雨\") {\n    console.log(\"家で遊ぼう。\");\n} else {\n    console.log(\"何しようかな？\");\n}",
+                "syntax_description": "`if (条件) { ... }`: 条件が`true`のときに実行される\n`else { ... }`: `if`の条件が`false`のときに実行される\n`else if (別の条件) { ... }`: 複数の条件を順番に試す"
+            },
+            "loops": {
+                "name": "繰り返し (Loops)",
+                "title": "同じことを何度も行う",
+                "description": "同じことを何度も行うときに使うよ。例えば、10回繰り返して何かを描くときなどに便利だね。",
+                "syntax": "for (let i = 0; i < 5; i++) {\n    console.log(i + \"回目！\");\n}\n\nlet count = 0;\nwhile (count < 3) {\n    console.log(\"まだ\" + count + \"回目\");\n    count = count + 1; // countを増やすのを忘れないで！\n}",
+                "syntax_description": "`for (初期化; 条件; 更新) { ... }`: 指定した回数だけ処理を繰り返す\n`while (条件) { ... }`: 条件が`true`の間、処理を繰り返す"
+            },
+            "operators": {
+                "name": "演算子 (Operators)",
+                "title": "計算や条件の比較をする記号",
+                "description": "数値の計算や、条件が正しいかどうかを比較するときに使う特別な記号だよ。",
+                "syntax": "// 算術演算子\nlet a = 10;\nlet b = 3;\nconsole.log(a + b); // 足し算: 13\nconsole.log(a - b); // 引き算: 7\nconsole.log(a * b); // 掛け算: 30\nconsole.log(a / b); // 割り算: 3.33...\nconsole.log(a % b); // 余り: 1\n\n// 比較演算子\nconsole.log(a === 10); // 等しいか: true\nconsole.log(a !== b); // 等しくないか: true\nconsole.log(a > b);   // より大きいか: true\nconsole.log(a < b);   // より小さいか: false\nconsole.log(a >= 10); // 以上か: true\nconsole.log(a <= b); // 以下か: false\n\n// 論理演算子\nlet isSunny = true;\nlet isWarm = false;\nconsole.log(isSunny && isWarm); // かつ (両方trueならtrue): false\nconsole.log(isSunny || isWarm); // または (どちらかtrueならtrue): true\nconsole.log(!isSunny);          // ではない (trueならfalse、falseならtrue): false",
+                "syntax_description": "**算術演算子**\n`+`: 足し算\n`-`: 引き算\n`*`: 掛け算\n`/`: 割り算\n`%`: 余り\n\n**比較演算子**\n`===`: 厳密に等しい\n`!==`: 厳密に等しくない\n`>`: より大きい\n`<`: より小さい\n`>=`: 以上\n`<=`: 以下\n\n**論理演算子**\n`&&`: かつ (AND)\n`||`: または (OR)\n`!`: ではない (NOT)"
+            },
+            "class": {
+                "name": "クラス (Class)",
+                "title": "自分だけのものを作る設計図",
+                "description": "クラスは、同じような性質や動きをするもの（オブジェクト）を作るための設計図だよ。例えば、たくさんのパーティクルを作る場合、パーティクルの設計図（クラス）を一つ作って、そこからたくさんのパーティクル（オブジェクト）を生み出すことができるんだ。",
+                "syntax": "class MyObject {\n    constructor(x, y) { // ものが作られるときに最初に呼ばれる\n        this.x = x;\n        this.y = y;\n    }\n\n    update() { // ものの状態を更新する\n        this.x += 1;\n    }\n\n    show() { // ものを描画する\n        ellipse(this.x, this.y, 10, 10);\n    }\n}",
+                "syntax_description": "`class ClassName { ... }`: クラスを定義するキーワード。`ClassName`はクラスの名前。\n`constructor(...)`: クラスから新しいものが作られるときに自動的に呼ばれる特別なメソッド。初期設定をする場所。\n`methodName(...)`: クラスが持つ機能（関数）のこと。`update()`や`show()`など、好きな名前で定義できる。"
+            }
+        }
+    },
+    "p5_3d_basic": {
+        "category_name": "p5.js 3Dのきほん",
+        "title": "立体的な世界を作る (番外編)",
+        "description": "p5.jsには、3Dの図形や空間を扱うための機能もあるんだ！WEBGLモードで立体的な絵を描こう。これは、通常のp5.jsの機能とは少し違う、特別なモードだよ。",
+        "items": {
+            "webgl_canvas": {
+                "name": "createCanvas(w, h, WEBGL)",
+                "title": "3Dキャンバスを作る",
+                "description": "3D用のキャンバスを作るよ。`WEBGL`は3Dモードを有効にするためのキーワードだよ。",
+                "syntax": "createCanvas(400, 400, WEBGL);",
+                "syntax_description": "w: キャンバスの横幅\nh: キャンバスの縦幅\nWEBGL: 3Dモードを有効にするキーワード"
+            },
+            "lights": {
+                "name": "lights()",
+                "title": "光を当てる",
+                "description": "3D空間に光を当てる関数だよ。これにより、立体的なものが影を持つようになるんだ。",
+                "syntax": "lights();",
+                "syntax_description": "なし"
+            },
+            "box": {
+                "name": "box(size)",
+                "title": "立方体を描く",
+                "description": "一辺の長さが `size` の立方体を描く関数だよ。",
+                "syntax": "box(50);",
+                "syntax_description": "size: 立方体の一辺の長さ"
+            },
+            "sphere": {
+                "name": "sphere(radius)",
+                "title": "球体を描く",
+                "description": "半径が `radius` の球体を描く関数だよ。",
+                "syntax": "sphere(40);",
+                "syntax_description": "radius: 球体の半径"
+            },
+            "plane": {
+                "name": "plane(w, h)",
+                "title": "平面を描く",
+                "description": "幅 `w` と高さ `h` の平面を描く関数だよ。",
+                "syntax": "plane(150, 150);",
+                "syntax_description": "w: 平面の横幅\nh: 平面の縦幅"
+            },
+            "rotateX": {
+                "name": "rotateX(angle)",
+                "title": "X軸で回転",
+                "description": "X軸を中心に、`angle`の量だけ回転させるよ。`angle`はラジアンという単位で指定するけど、`radians(度数)`で度数から変換できるよ。",
+                "syntax": "rotateX(frameCount * 0.01);",
+                "syntax_description": "angle: 回転量（ラジアン）"
+            },
+            "rotateY": {
+                "name": "rotateY(angle)",
+                "title": "Y軸で回転",
+                "description": "Y軸を中心に回転させるよ。",
+                "syntax": "rotateY(frameCount * 0.01);",
+                "syntax_description": "angle: 回転量（ラジアン）"
+            },
+            "rotateZ": {
+                "name": "rotateZ(angle)",
+                "title": "Z軸で回転",
+                "description": "Z軸を中心に回転させるよ。",
+                "syntax": "rotateZ(frameCount * 0.01);",
+                "syntax_description": "angle: 回転量（ラジアン）"
+            },
+            "translate_3d": {
+                "name": "translate(x, y, z)",
+                "title": "位置を移動 (3D)",
+                "description": "オブジェクトの位置を移動させるよ。3DなのでZ座標も指定できるんだ。",
+                "syntax": "translate(50, 0, -50);",
+                "syntax_description": "x: X方向の移動量\ny: Y方向の移動量\nz: Z方向の移動量"
+            },
+            "push_pop": {
+                "name": "push() / pop()",
+                "title": "状態の保存と復元",
+                "description": "`push()`は現在の描画設定（位置、回転、色など）を保存し、`pop()`は保存した設定を元に戻すよ。これを使うと、それぞれのオブジェクトに独立した変換を適用できるんだ。",
+                "syntax": "push();\ntranslate(50, 50);\nbox(30);\npop();",
+                "syntax_description": "push(): 現在の描画状態をスタックに保存\npop(): スタックから描画状態を復元"
+            },
+            "normalMaterial": {
+                "name": "normalMaterial()",
+                "title": "法線に基づいて色を塗る",
+                "description": "3Dオブジェクトの各面の向き（法線）に基づいて色を自動的に設定するマテリアルだよ。光源を設定しなくても、立体感のある見た目になるんだ。デバッグや、シンプルな見た目の3Dオブジェクトに便利だよ。",
+                "syntax": "function setup() {\n    createCanvas(400, 400, WEBGL);\n}\n\nfunction draw() {\n    background(200);\n    normalMaterial(); // 法線マテリアルを適用\n    rotateX(frameCount * 0.01);\n    rotateY(frameCount * 0.005);\n    box(80);\n}",
+                "syntax_description": "特別な引数は必要ありません。呼び出すだけで適用されます。"
+            },
+            "ambientLight": {
+                "name": "ambientLight(v1, [v2], [v3], [alpha])",
+                "title": "環境光を設定する",
+                "description": "3Dシーン全体を均等に照らす光だよ。影を作らないので、全体の明るさを調整するのに便利なんだ。",
+                "syntax": "ambientLight(60); // 灰色っぽい光\nambientLight(255, 0, 0); // 赤い光",
+                "syntax_description": "v1, v2, v3: 色の値（グレースケールまたはRGB）\nalpha: (オプション) 透明度"
+            },
+            "pointLight": {
+                "name": "pointLight(v1, [v2], [v3], [x], [y], [z])",
+                "title": "点光源を設定する",
+                "description": "特定の場所から全方向に光を放つ光源だよ。電球のような光を表現できるんだ。位置を指定すると、その場所から物体が照らされるようになるよ。",
+                "syntax": "pointLight(255, 255, 255, 0, 0, 0); // 原点から白い光",
+                "syntax_description": "v1, v2, v3: 光の色（グレースケールまたはRGB）\nx, y, z: (オプション) 光源の位置"
+            },
+            "orbitControl": {
+                "name": "orbitControl([sensitivityX], [sensitivityY], [key])",
+                "title": "マウスで3D視点を操作する",
+                "description": "マウスを使って3D空間の視点を自由に回転させたり、ズームしたりできるようにする機能だよ。`,orbitControl()`を`draw()`の中で呼び出すだけで使えるんだ。",
+                "syntax": "orbitControl();",
+                "syntax_description": "sensitivityX, sensitivityY: (オプション) マウスの感度\nkey: (オプション) 視点操作を有効にするキー"
+            },
+            "torus": {
+                "name": "torus(radius, tubeRadius, [detailX], [detailY])",
+                "title": "ドーナツ型（トーラス）を描く",
+                "description": "ドーナツのような形（トーラス）を描く関数だよ。惑星のリングなどを表現するのに便利だよ。",
+                "syntax": "torus(80, 5);",
+                "syntax_description": "radius: トーラスの中心から外側までの半径\ntubeRadius: トーラスの管の半径（太さ）\ndetailX, detailY: (オプション) 解像度"
+            },
+            "TRIANGLE_STRIP": {
+                "name": "TRIANGLE_STRIP (beginShapeモード)",
+                "title": "三角形の帯を描く",
+                "description": "`beginShape()`と一緒に使うと、連続した三角形の帯（ストリップ）を効率的に描くことができるモードだよ。3D地形などを作るのに役立つんだ。",
+                "syntax": "beginShape(TRIANGLE_STRIP);\nvertex(x1, y1, z1);\nvertex(x2, y2, z2);\n// ... 続けてvertex()で頂点を追加 ...\nendShape();",
+                "syntax_description": "`beginShape()`の引数として渡すことで、描画モードを設定します。"
+            }
+        }
+    }
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>p5.js Kids Editor</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- jBox CDN -->
+    <link href="https://cdn.jsdelivr.net/gh/StephanWagner/jBox@v1.3.3/dist/jBox.all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/StephanWagner/jBox@v1.3.3/dist/jBox.all.min.js"></script>
+    <!-- CodeMirror CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
+    <!-- CodeMirror Addons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/addon/mode/overlay.min.js"></script>
+    <!-- CodeMirror Hint Addons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/addon/hint/show-hint.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/addon/hint/show-hint.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/addon/hint/javascript-hint.min.js"></script>
+    <!-- CodeMirror Auto Close Brackets Addon -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/addon/edit/closebrackets.min.js"></script>
+    <script src="js/p5_mode.js"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- p5.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.dom.min.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="flex flex-col min-h-screen bg-gray-100 text-gray-800" style="font-family: 'Noto Sans JP', sans-serif;">
+    <header class="bg-pink-600 p-4 flex justify-between items-center shadow-md">
+        <h1 class="text-white text-2xl font-bold drop-shadow-sm">Super p5.js Editor</h1>
+        <nav class="flex space-x-2">
+            <button id="runButton" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-lg transition duration-200 ease-in-out transform hover:-translate-y-1"><i class="fas fa-play"></i> 実行</button>
+            <button id="saveButton" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-lg transition duration-200 ease-in-out transform hover:-translate-y-1"><i class="fas fa-save"></i> 保存</button>
+            <button id="loadButton" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-lg transition duration-200 ease-in-out transform hover:-translate-y-1"><i class="fas fa-upload"></i> 読み込み</button>
+            <button id="referenceButton" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-lg transition duration-200 ease-in-out transform hover:-translate-y-1"><i class="fas fa-book"></i> リファレンス</button>
+            <button id="presetButton" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-lg transition duration-200 ease-in-out transform hover:-translate-y-1"><i class="fas fa-cog"></i> プリセット</button>
+            <button id="presentButton" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg shadow-lg transition duration-200 ease-in-out transform hover:-translate-y-1"><i class="fas fa-presentation"></i> 発表モード</button>
+        </nav>
+    </header>
+
+    <main class="flex flex-grow p-5 gap-5">
+        <div class="editor-container flex-1 flex flex-col border-2 border-pink-300 rounded-lg shadow-lg">
+            <textarea id="codeEditor" placeholder="ここにコードを書いてね！">// ここにコードを書いてね！
+function setup() {
+    createCanvas(400, 400);
+}
+
+function draw() {
+    background(220);
+    rect(50, 50, 100, 100);
+}</textarea>
+        </div>
+        <div class="output-container flex-1 border-2 border-pink-300 rounded-lg overflow-hidden shadow-lg bg-white">
+            <iframe id="outputFrame" sandbox="allow-scripts allow-modals allow-same-origin" class="w-full h-full border-none"></iframe>
+        </div>
+    </main>
+
+    <!-- ログ表示エリア -->
+    <div class="log-area bg-gray-200 p-4 mx-5 mb-5 rounded-lg shadow-md">
+        <div class="flex justify-between items-center mb-2">
+            <h2 class="text-xl font-bold text-gray-800">ログ出力</h2>
+            <button id="clearLogButton" class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-3 rounded-lg shadow-sm transition duration-200 ease-in-out">
+                <i class="fas fa-trash-alt"></i> クリア
+            </button>
+        </div>
+        <div id="logOutput" class="bg-gray-800 text-green-400 p-3 rounded-lg h-40 overflow-y-auto text-sm font-mono leading-relaxed">
+            <!-- ログメッセージがここに追加されます -->
+        </div>
+    </div>
+
+    <div id="referenceModal" class="hidden">
+        <div class="bg-white p-8 rounded-xl shadow-2xl w-11/12 max-w-5xl h-5/6 relative text-center flex flex-col">
+            <h2 class="text-pink-600 text-3xl font-bold mb-6">p5.js リファレンス</h2>
+            <div class="flex flex-grow overflow-hidden">
+                <div id="referenceSidebar" class="w-1/3 bg-gray-100 p-4 rounded-l-lg overflow-y-auto text-left flex-shrink-0">
+                    <!-- サイドバーコンテンツがここに動的に生成されます -->
+                </div>
+                <div id="referenceContent" class="flex-1 p-4 text-left overflow-y-auto bg-white">
+                    <!-- メインコンテンツがここに表示されます -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="presetModal" class="hidden">
+        <div class="bg-white p-8 rounded-xl shadow-2xl w-11/12 max-w-xl relative text-center">
+            <h2 class="text-pink-600 text-3xl font-bold mb-6">プリセットコード</h2>
+            <div id="presetList" class="text-left space-y-4"></div>
+        </div>
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script src="js/script.js"></script>
+</body>
+</html>
