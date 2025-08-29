@@ -10,6 +10,45 @@
                 "syntax": "createCanvas(400, 400);",
                 "syntax_description": "w: キャンバスの横幅\nh: キャンバスの縦幅"
             },
+            "createButton": {
+    "name": "createButton(label)",
+    "title": "ボタンを生成",
+    "description": "指定したラベルのボタンを生成し、クリックイベントなどを設定できます。",
+    "syntax": "let btn = createButton('クリック')",
+    "syntax_description": "label: ボタンに表示する文字列\nbtn: HTMLButtonElement オブジェクト"
+},
+
+"createSlider": {
+    "name": "createSlider(min, max, [value], [step])",
+    "title": "スライダーを生成",
+    "description": "指定範囲の値を選択できるスライダーを生成します。",
+    "syntax": "let slider = createSlider(0, 100, 50, 1)",
+    "syntax_description": "min: 最小値\nmax: 最大値\nvalue: 初期値（省略可）\nstep: 増分（省略可）"
+},
+
+"createCheckbox": {
+    "name": "createCheckbox(label, [checked])",
+    "title": "チェックボックスを生成",
+    "description": "ラベル付きのチェックボックスを生成します。初期状態を指定可能です。",
+    "syntax": "let cb = createCheckbox('有効にする', true)",
+    "syntax_description": "label: 表示ラベル\nchecked: 初期状態（true/false、省略可）"
+},
+
+"createSelect": {
+    "name": "createSelect()",
+    "title": "セレクトボックスを生成",
+    "description": "選択肢を追加してドロップダウンメニューを作成できます。",
+    "syntax": "let sel = createSelect(); sel.option('A'); sel.option('B')",
+    "syntax_description": "sel: HTMLSelectElement オブジェクト\noption(): 選択肢を追加"
+},
+
+"createColorPicker": {
+    "name": "createColorPicker([value])",
+    "title": "カラーピッカーを生成",
+    "description": "初期色を指定してカラーピッカーを生成します。ユーザーが色を選択できます。",
+    "syntax": "let cp = createColorPicker('#ff0000')",
+    "syntax_description": "value: 初期色（'#rrggbb' 形式、省略可）\ncp: HTMLInputElement（type='color'）"
+},
             "background": {
                 "name": "background(color)",
                 "title": "背景色を変える",
