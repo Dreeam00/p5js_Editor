@@ -38,12 +38,26 @@
                 "syntax": "rect(50, 50, 100, 100)",
                 "syntax_description": "x: 四角のX座標\ny: 四角のY座標\nw: 四角の横幅\nh: 四角の縦幅"
             },
+            "square": {
+                "name": "square(x, y, r)",
+                "title": "正方形を描く",
+                "description": "正方形を描く関数だよ。`x`, `y` は中心の座標、`r` は半径",
+                "syntax": "square(50, 50, 100)",
+                "syntax_description": "x: 中心点のX座標\ny: 中心点のY座標\nr: 半径"
+            },
             "ellipse": {
                 "name": "ellipse(x, y, w, h)",
                 "title": "円や楕円を描く",
                 "description": "円や楕円を描く関数だよ。`x`, `y` は中心の座標、`w` は横幅、`h` は縦幅だよ。円を描くときは`w`と`h`を同じにするんだ。",
                 "syntax": "ellipse(width / 2, height / 2, 50, 50); // 真ん中に円",
                 "syntax_description": "x: 中心点のX座標\ny: 中心点のY座標\nw: 横幅\nh: 縦幅"
+            },
+            "circle": {
+                "name": "circle(x, y, r)",
+                "title": "円を描く",
+                "description": "円を描く関数だよ。`x`, `y` は中心の座標、`r` は半径",
+                "syntax": "circle(width / 2, height / 2, 50); // 真ん中に円",
+                "syntax_description": "x: 中心点のX座標\ny: 中心点のY座標\nr: 半径"
             },
             "line": {
                 "name": "line(x1, y1, x2, y2)",
