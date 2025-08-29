@@ -3,7 +3,7 @@
     "set": "function setup() {\n    createCanvas(400, 400);\n}",
     "draw": "function draw() {\n    background(220);\n}",
     "rect": "rect(x, y, w, h);",
-    "cir": "circle(x, y, r);",
+    "ci": "circle(x, y, r);",
     "el": "ellipse(x, y, w, h);",
     "line": "line(x1, y1, x2, y2);",
     "st": "stroke(color);",
