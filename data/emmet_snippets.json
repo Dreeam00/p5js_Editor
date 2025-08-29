@@ -1,4 +1,5 @@
 {
+    "#":"function setup() {\n    createCanvas(400, 400,WEBGL);\n}\nfunction draw() {\n    box(100);\n    rotateX(mouseX * 0.01)\n    rotateY(mouseY * 0.01)\n}",
     "!": "function setup() {\n    createCanvas(400, 400);\n}\nfunction draw() {\n    background(220);\n}",
     "set": "function setup() {\n    createCanvas(400, 400);\n}",
     "draw": "function draw() {\n    background(220);\n}",
