@@ -22,6 +22,5 @@
     "roX": "rotateX(angle);",
     "roY": "rotateY(angle);",
     "roZ": "rotateZ(angle);",
-    "trans": "translate(x, y, z);",
     "sc": "scale(x, y, z);"
 }
