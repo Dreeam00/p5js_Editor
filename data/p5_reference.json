@@ -457,7 +457,51 @@
                 "description": "`rect()`関数で四角形を描画する際の基準点を設定するよ。`CENTER`にすると、指定した座標が四角形の中心になるんだ。デフォルトは`CORNER`で左上が基準点だよ。",
                 "syntax": "rectMode(CENTER);\nrect(width/2, height/2, 50, 50); // キャンバスの中心に四角形が描かれる",
                 "syntax_description": "mode: `CORNER`（デフォルト、左上が基準点）、`CORNERS`（対角の2点が基準点）、`CENTER`（中心が基準点）、`RADIUS`（中心と半径で指定）"
-            }
+            },
+            "createAudioInput": {
+    "name": "createAudioInput()",
+    "title": "マイク入力を取得",
+    "description": "マイクからの音声入力を取得します。音量や周波数の解析に使用できます。",
+    "syntax": "let mic = createAudioInput()",
+    "syntax_description": "mic: AudioInput オブジェクト。getLevel() などで音量取得可能"
+},
+
+"getAudioLevel": {
+    "name": "getAudioLevel()",
+    "title": "音量レベルを取得",
+    "description": "AudioInput オブジェクトから現在の音量レベル（0.0〜1.0）を取得します。",
+    "syntax": "let level = mic.getLevel()",
+    "syntax_description": "level: 現在の音量レベル（float）"
+},"createCapture": {
+    "name": "createCapture(type)",
+    "title": "カメラ映像を取得",
+    "description": "デバイスのカメラ映像を取得し、Canvas 上に表示できます。",
+    "syntax": "let cam = createCapture(VIDEO)",
+    "syntax_description": "type: 'VIDEO' を指定すると映像取得\ncam: HTMLVideoElement オブジェクト"
+},
+
+"hideCapture": {
+    "name": "cam.hide()",
+    "title": "カメラ映像を非表示",
+    "description": "createCapture で取得した映像を Canvas 上に描画せず、非表示にします。",
+    "syntax": "cam.hide()",
+    "syntax_description": "cam: createCapture で取得したオブジェクト"
+},"createCapture": {
+    "name": "createCapture(type)",
+    "title": "カメラ映像を取得",
+    "description": "デバイスのカメラ映像を取得し、Canvas 上に表示できます。",
+    "syntax": "let cam = createCapture(VIDEO)",
+    "syntax_description": "type: 'VIDEO' を指定すると映像取得\ncam: HTMLVideoElement オブジェクト"
+},
+
+"hideCapture": {
+    "name": "cam.hide()",
+    "title": "カメラ映像を非表示",
+    "description": "createCapture で取得した映像を Canvas 上に描画せず、非表示にします。",
+    "syntax": "cam.hide()",
+    "syntax_description": "cam: createCapture で取得したオブジェクト"
+}
+            
         }
     },
     "js_basic": {
