@@ -2,6 +2,7 @@
     "!": "function setup() {\n    createCanvas(400, 400);\n}\nfunction draw() {\n    background(220);\n}",
     "set": "function setup() {\n    createCanvas(400, 400);\n}",
     "draw": "function draw() {\n    background(220);\n}",
+    "cic": "circle(x, y, r);",
     "rc": "rect(x, y, w, h);",
     "el": "ellipse(x, y, d);",
     "ln": "line(x1, y1, x2, y2);",
@@ -18,5 +19,5 @@
     "fC": "frameCount",
     "box": "box(size);",
     "trans": "translate(x, y, z);",
-    "sc": "scale(x, y, z);",
+    "sc": "scale(x, y, z);"
 }
