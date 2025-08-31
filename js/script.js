@@ -533,3 +533,8 @@ $(document).ready(function() {
         }
     });
 });
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/p5js_Editor/service-worker.js', {
+    scope: '/p5js_Editor/'
+  });
+}
