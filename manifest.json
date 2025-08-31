@@ -4,7 +4,7 @@
   "start_url": "/p5js_Editor/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#cccccc",
+  "theme_color": "#444444",
   "icons": [
     {
       "src": "/p5js_Editor/SuperEditor-192.png",
